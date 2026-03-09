@@ -37,14 +37,14 @@ const ProjectsSection = () => (
             <p className="text-muted-foreground mb-6 leading-relaxed">
               A UI/UX concept platform presenting community stories and traditions through a simple and engaging interface.
             </p>
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity w-fit"
-            >
-              View Figma Prototype <ExternalLink size={14} />
-            </a>
+           <a
+  href="https://www.figma.com/site/yCoX3TNlx9dcNFcPFoSMXS/LOKVANI?node-id=0-1&t=9NzmSi1s69hq6n3z-1"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-white"
+>
+  View Figma Prototype
+</a>
           </div>
         </div>
       </motion.div>
@@ -71,14 +71,17 @@ const ProjectsSection = () => (
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Designed the UI/UX for a healthcare website during a hackathon, focusing on clean layout, intuitive navigation, and clear information hierarchy so users can quickly access medical services and information.
             </p>
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-primary text-primary font-medium text-sm hover:bg-primary hover:text-primary-foreground transition-colors w-fit"
-            >
-              View Design Concept <ExternalLink size={14} />
-            </a>
+            <button
+  onClick={() => {
+    const el = document.getElementById("design-process");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition"
+>
+  View Design Concept
+</button>
           </div>
         </div>
       </motion.div>

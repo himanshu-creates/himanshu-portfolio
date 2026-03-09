@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Search, PenTool, MousePointerClick, CheckCircle } from "lucide-react";
 
@@ -9,7 +10,7 @@ const steps = [
 ];
 
 const ProcessSection = () => (
-  <section id="process" className="section-padding">
+  <section id="design-process" className="section-padding">
     <div className="max-w-5xl mx-auto">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
