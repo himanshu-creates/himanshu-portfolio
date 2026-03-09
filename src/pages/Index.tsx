@@ -19,7 +19,7 @@ const Index = () => {
       <ResumeSection />
       <ContactSection />
       <footer className="py-8 text-center text-muted-foreground text-sm border-t border-border">
-        <p>© 2025 Himanshu Chandola. Crafted with passion.</p>
+        <p>© 2026 Himanshu Chandola. Crafted with passion.</p>
       </footer>
     </div>
   );
