@@ -19,7 +19,7 @@ const HeroSection = () => (
         className="flex-1 text-center lg:text-left"
       >
         <p className="text-accent font-medium mb-3 tracking-widest uppercase text-sm">
-          UI/UX Design Intern
+          UI/UX Designer
         </p>
 
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6">
