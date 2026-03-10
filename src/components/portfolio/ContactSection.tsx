@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 const contacts = [
@@ -12,11 +12,16 @@ const contacts = [
 const ContactSection = () => {
 
 const form = useRef<HTMLFormElement>(null);
+const [loading,setLoading] = useState(false);
+const [success,setSuccess] = useState(false);
 
 const sendEmail = (e:any) => {
+
 e.preventDefault();
 
 if(!form.current) return;
+
+setLoading(true);
 
 emailjs.sendForm(
 "service_nmqgcf8",
@@ -24,9 +29,21 @@ emailjs.sendForm(
 form.current,
 "VX6sYtDmzYIkkkixS"
 ).then(() => {
-alert("Message sent successfully!");
+
+setLoading(false);
+setSuccess(true);
+
+form.current?.reset();
+
+setTimeout(()=>{
+setSuccess(false);
+},3000);
+
 }).catch(() => {
+
+setLoading(false);
 alert("Failed to send message.");
+
 });
 
 };
@@ -41,7 +58,7 @@ return (
 initial={{ opacity: 0, y: 20 }}
 whileInView={{ opacity: 1, y: 0 }}
 viewport={{ once: true }}
-className="text-3xl md:text-4xl font-display font-bold mb-12 gradient-text inline-block"
+className="text-3xl md:text-4xl font-display font-bold mb-12 gradient-text"
 >
 Get in Touch
 </motion.h2>
@@ -77,7 +94,7 @@ className="text-muted-foreground text-sm hover:text-accent transition-colors bre
 ))}
 </div>
 
-{/* Contact Form */}
+{/* Contact form */}
 <form
 ref={form}
 onSubmit={sendEmail}
@@ -89,7 +106,7 @@ type="text"
 name="name"
 placeholder="Your Name"
 required
-className="p-3 rounded-lg bg-secondary"
+className="p-3 rounded-lg bg-secondary focus:ring-2 focus:ring-primary outline-none"
 />
 
 <input
@@ -97,7 +114,7 @@ type="email"
 name="email"
 placeholder="Your Email"
 required
-className="p-3 rounded-lg bg-secondary"
+className="p-3 rounded-lg bg-secondary focus:ring-2 focus:ring-primary outline-none"
 />
 
 <textarea
@@ -105,15 +122,24 @@ name="message"
 placeholder="Your Message"
 required
 rows={5}
-className="p-3 rounded-lg bg-secondary"
+className="p-3 rounded-lg bg-secondary focus:ring-2 focus:ring-primary outline-none"
 />
 
 <button
 type="submit"
-className="bg-primary text-white px-6 py-3 rounded-lg hover:opacity-90 transition"
+disabled={loading}
+className="bg-primary text-white px-6 py-3 rounded-lg hover:opacity-90 transition flex justify-center items-center"
 >
-Send Message
+
+{loading ? "Sending..." : "Send Message"}
+
 </button>
+
+{success && (
+<p className="text-green-500 text-sm text-center">
+Message sent successfully 🚀
+</p>
+)}
 
 </form>
 
